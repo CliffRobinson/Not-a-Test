@@ -9,3 +9,9 @@ export const getLatestUser = pipe(
   reverse,
   head
 )
+
+export const fakeUsers = [
+  {id:0, name:"cliff"},
+  {id:1, name:"chas"},
+  {id:2, name:"ulli"}
+]
