@@ -3,9 +3,11 @@ import {sort} from 'ramda'
 import React from 'react'
 
 function sortByName(objA, objB) {
-  if (objA.name < objB.name) {
+  const nameA = objA.name.toLowerCase()
+  const nameB = objB.name.toLowerCase()
+  if (nameA < nameB) {
     return -1
-  } else if (objA.name > objB.name) {
+  } else if (nameA > nameB) {
     return 1
   } else {
     return 0
@@ -13,8 +15,8 @@ function sortByName(objA, objB) {
 }
 
 export default function App(props) {
-  const { handleOnSubmit, latestUser, users, nextUserId, alphaSort } = props
-  //console.log(props);
+  const { handleOnSubmit, handleClick, latestUser, users, nextUserId, alphaSort } = props
+  console.log(props);
   //By doing the destructuring outside of the app function declation, I can see what is actually being fed to props. 
   return (
     <div className="App">
@@ -26,12 +28,13 @@ export default function App(props) {
         <input type="text" name="user" />
         <input type="submit" value="Register user" />
       </form>
-      <button onClick={()=> console.log("lol")} >Sort Alphabetically</button>
+      <button onClick={handleClick} > {alphaSort ? "Sort Chronologically" : "Sort Alphabetically" }</button>
+      <p> Alpha sort is {alphaSort.toString()} </p>
       <p>See the list below for everyone else who has registered.</p>
       <ul>
         {alphaSort 
-          ? users.sort(sortByName).map( (user) => {return (<li>{user.name}</li>)})
-          : users.map( (user) => {return (<li>{user.name}</li>)})
+          ? sort(sortByName, users).map( (user) => {return (<li>{user.name}</li>)})
+          : users.slice().map( (user) => {return (<li>{user.name}</li>)})
         }
       </ul>
     </div>

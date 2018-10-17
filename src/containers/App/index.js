@@ -2,7 +2,7 @@ import { isNonEmptyString } from 'ramda-adjunct'
 import { connect } from 'react-redux'
 
 import App from '../../components/App'
-import { userRegistered } from '../../state/actions'
+import { userRegistered, alphaSortToggled } from '../../state/actions'
 import { getUsers, getLatestUser, getNextUserId, getAlphaSort } from '../../state/selectors'
 
 function mapStateToProps(state, props) {
@@ -31,6 +31,10 @@ function mapDispatchToProps(dispatch, props) {
         dispatch(userRegistered(userObj))
         userInput.value = ''
       }
+    },
+    handleClick: (e) => {
+      console.log("toggling alpha sort")
+      dispatch(alphaSortToggled())
     }
   }
 }
