@@ -36,6 +36,7 @@ export default function App(props) {
           ? sort(sortByName, users).map( (user) => {return (<li>{user.name}</li>)})
           : users.slice().map( (user) => {return (<li>{user.name}</li>)})
         }
+        {/* If I had more time, instead of returning a string with the name, the map would return a user component with a delete button that dispatched the userDeleted action with the ID of the user as an argument.  */}
       </ul>
     </div>
   )

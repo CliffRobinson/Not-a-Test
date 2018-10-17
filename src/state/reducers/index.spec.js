@@ -23,7 +23,8 @@ test("add user to empty array case", ()=> {
     }
     const expectedState = {
         nextUserId:1,
-        users:[fakeExtraUser]
+        users:[fakeExtraUser],
+        alphaSort: false
     }
     expect(rootReducer(undefined, action)).toEqual(expectedState)
 })
@@ -38,12 +39,14 @@ test("add user to existing array case", ()=> {
 
     const existingState = {
         nextUserId:3,
-        users:fakeUsers
+        users:fakeUsers,
+        alphaSort: false
     }
 
     const expectedState = {
         nextUserId:4,
-        users:[...fakeUsers, fakeExtraUser]
+        users:[...fakeUsers, fakeExtraUser],
+        alphaSort: false
     }
     expect(rootReducer(existingState, action)).toEqual(expectedState)
 })
@@ -58,7 +61,8 @@ test("delete user case", ()=> {
 
     const existingState = {
         nextUserId:3,
-        users:fakeUsers
+        users:fakeUsers,
+        alphaSort: false
     }
 
     const expectedState = {
@@ -66,7 +70,8 @@ test("delete user case", ()=> {
         users: [
             fakeUsers[0],
             fakeUsers[2]
-        ]
+        ],
+        alphaSort: false
     }
     expect(rootReducer(existingState, action)).toEqual(expectedState)
 })

@@ -12,7 +12,7 @@ export default function rootReducer(
         ? {
             ...state,
             users: [...state.users, payload.user],
-            nextUserId:(state.nextUserId+1)
+            nextUserId:(state.nextUserId+1) //this increments only when a user is added, and never decrements, meaning there will always be a unique user id. 
           }
         : state
     case USER_DELETED:
@@ -21,13 +21,13 @@ export default function rootReducer(
       return {
         ...state,
         users:newUsers
-      }
+      } //I didn't get around to implmenting this in the UI in time, but dispatching this action with the appropriate id will delete a user. 
     case ALPHA_SORT_TOGGLED:
       const newAlphaSort = !state.alphaSort
       return {
         ...state,
         alphaSort:newAlphaSort
-      }
+      } //this switches between alpha and chron sorts. 
     default:
       return state
   }

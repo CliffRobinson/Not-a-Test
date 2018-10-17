@@ -1,6 +1,6 @@
-import {USER_REGISTERED, USER_DELETED, fakeExtraUser} from "../constants"
+import {USER_REGISTERED, USER_DELETED, ALPHA_SORT_TOGGLED, fakeExtraUser} from "../constants"
 
-import {userRegistered, userDeleted} from "./"
+import {userRegistered, userDeleted, alphaSortToggled} from "./"
 
 test("userRegistered", ()=> {
     const expected = {
@@ -20,4 +20,11 @@ test("userDeleted", ()=> {
         }
     }
     expect(userDeleted(fakeExtraUser.id)).toEqual(expected)
+})
+
+test("alphaSortToggled", ()=> {
+    const expected = {
+        type: ALPHA_SORT_TOGGLED,
+    }
+    expect(alphaSortToggled()).toEqual(expected)
 })
