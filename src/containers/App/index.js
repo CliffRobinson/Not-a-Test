@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 
 import App from '../../components/App'
 import { userRegistered } from '../../state/actions'
-import { getUsers, getLatestUser } from '../../state/selectors'
+import { getUsers, getLatestUser, getNextUserId } from '../../state/selectors'
 
 function mapStateToProps(state, props) {
   return {
     users: getUsers(state),
-    latestUser: getLatestUser(state)
+    latestUser: getLatestUser(state),
+    nextUserId: getNextUserId(state)
   }
 }
 
