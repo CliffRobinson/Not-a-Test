@@ -1,4 +1,5 @@
 export const USER_REGISTERED = 'USER_REGISTERED'
+export const USER_DELETED = 'USER_DELETED'
 
 export const initialState = {
   users: [],

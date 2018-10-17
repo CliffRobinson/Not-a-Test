@@ -1,4 +1,4 @@
-import {fakeUsers, fakeExtraUser, initialState, USER_REGISTERED} from "../constants"
+import {fakeUsers, fakeExtraUser, initialState, USER_REGISTERED, USER_DELETED} from "../constants"
 import rootReducer from "./"
 
 
@@ -44,6 +44,29 @@ test("add user to existing array case", ()=> {
     const expectedState = {
         nextUserId:4,
         users:[...fakeUsers, fakeExtraUser]
+    }
+    expect(rootReducer(existingState, action)).toEqual(expectedState)
+})
+
+test("delete user case", ()=> {
+    const action = {
+        type:USER_DELETED,
+        payload: {
+            id:1
+        }
+    }
+
+    const existingState = {
+        nextUserId:3,
+        users:fakeUsers
+    }
+
+    const expectedState = {
+        nextUserId:3, //Note that we do not change nextuserId when deleting users. This means every ID is unique.
+        users: [
+            fakeUsers[0],
+            fakeUsers[2]
+        ]
     }
     expect(rootReducer(existingState, action)).toEqual(expectedState)
 })
