@@ -8,7 +8,7 @@ export default function rootReducer(
 ) {
   switch (type) {
     case USER_REGISTERED:
-      return payload.user && isNonEmptyString(payload.user)
+      return payload.user && isNonEmptyString(payload.user.name)
         ? {
             ...state,
             users: [...state.users, payload.user]
