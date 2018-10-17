@@ -1,4 +1,4 @@
-import { USER_REGISTERED, USER_DELETED } from '../constants'
+import { USER_REGISTERED, USER_DELETED, ALPHA_SORT_TOGGLED } from '../constants'
 
 export function userRegistered(user) {
   return {
@@ -15,5 +15,11 @@ export function userDeleted(id) {
     payload: {
       id
     }
+  }
+}
+
+export function alphaSortToggled() {
+  return {
+    type: ALPHA_SORT_TOGGLED
   }
 }

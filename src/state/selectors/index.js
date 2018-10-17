@@ -8,6 +8,10 @@ export function getNextUserId({nextUserId}) {
   return nextUserId
 }
 
+export function getAlphaSort({alphaSort}) {
+  return alphaSort
+}
+
 export const getLatestUser = pipe(
   getUsers,
   reverse,
