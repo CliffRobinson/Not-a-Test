@@ -14,12 +14,20 @@ function mapStateToProps(state, props) {
 }
 
 function mapDispatchToProps(dispatch, props) {
+  
   return {
-    handleOnSubmit: e => {
+    handleOnSubmit: (e, nextUserId) => { //See the component for notes on why I altered this. 
       e.preventDefault()
       const userInput = e.target.elements['user']
+      console.log(props)
+      const userObj = {
+        name:userInput.value,
+        id: nextUserId
+      }
       if (isNonEmptyString(userInput.value)) {
-        dispatch(userRegistered(userInput.value))
+        console.log(`Adding:`)
+        console.log(userObj)
+        dispatch(userRegistered(userObj))
         userInput.value = ''
       }
     }
